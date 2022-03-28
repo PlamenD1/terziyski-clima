@@ -22,7 +22,6 @@ namespace TerziyskiClima.Controllers
             authenticationService = _authenticationService;
         }
 
-
         public IActionResult Index()
         {
             ViewBag.Role = authenticationService.GetRole(HttpContext.User);

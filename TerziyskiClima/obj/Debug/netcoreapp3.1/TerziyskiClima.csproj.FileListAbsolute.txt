@@ -268,3 +268,4 @@ D:\GitHub\terziyski-clima\TerziyskiClima\obj\Debug\netcoreapp3.1\TerziyskiClima.
 D:\GitHub\terziyski-clima\TerziyskiClima\obj\Debug\netcoreapp3.1\TerziyskiClima.genruntimeconfig.cache
 D:\GitHub\terziyski-clima\TerziyskiClima\obj\Debug\netcoreapp3.1\Razor\Views\Product\Edit.cshtml.g.cs
 D:\GitHub\terziyski-clima\TerziyskiClima\obj\Debug\netcoreapp3.1\Razor\Views\Cart\Index.cshtml.g.cs
+D:\GitHub\terziyski-clima\TerziyskiClima\obj\Debug\netcoreapp3.1\Razor\Views\Purchase\Index.cshtml.g.cs

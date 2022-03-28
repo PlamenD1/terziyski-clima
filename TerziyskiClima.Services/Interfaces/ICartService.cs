@@ -9,6 +9,7 @@ namespace TerziyskiClima.Services.Interfaces
     {
         public string AddToCart(Product productToAdd, string cartString);
         public string RemoveFromCart(int productId, string cartString);
+        public string ClearCart(string cartString);
         public List<CartItem> GetCartContent(string cartString);
     }
 }

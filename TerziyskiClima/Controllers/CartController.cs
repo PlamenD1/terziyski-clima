@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System;
@@ -12,6 +13,7 @@ using TerziyskiClima.Services.Extensions;
 
 namespace TerziyskiClima.Controllers
 {
+    [Authorize(Policy = "NoAnonymous")]
     public class CartController : Controller
     {
         private readonly ProductService productService;

@@ -34,6 +34,7 @@ namespace TerziyskiClima
             services.AddScoped<ProductService>();
             services.AddScoped<AuthenticationService>();
             services.AddScoped<CartService>();
+            services.AddScoped<PurchaseService>();
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
             {
                 options.LoginPath = "/Login";

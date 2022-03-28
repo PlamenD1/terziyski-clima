@@ -23,6 +23,13 @@ namespace TerziyskiClima.Services
             return cart.ToString();
         }
 
+        public string ClearCart(string cartString)
+        {
+            Cart cart = cartString.ToCart();
+            cart.Items.RemoveAll(x => true);
+            return cart.ToString();
+        }
+
         public List<CartItem> GetCartContent(string cartString)
         {
             Cart cart = cartString.ToCart();
