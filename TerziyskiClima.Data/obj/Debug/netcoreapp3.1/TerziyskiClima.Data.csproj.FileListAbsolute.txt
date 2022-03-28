@@ -23,3 +23,15 @@ C:\Users\User\Desktop\TerziyskiClima\TerziyskiClima.Data\obj\Debug\netcoreapp3.1
 C:\Users\User\Desktop\TerziyskiClima\TerziyskiClima.Data\obj\Debug\netcoreapp3.1\TerziyskiClima.Data.dll
 C:\Users\User\Desktop\TerziyskiClima\TerziyskiClima.Data\obj\Debug\netcoreapp3.1\TerziyskiClima.Data.pdb
 C:\Users\User\Desktop\TerziyskiClima\TerziyskiClima.Data\obj\Debug\netcoreapp3.1\TerziyskiClima.Data.genruntimeconfig.cache
+D:\GitHub\terziyski-clima\TerziyskiClima.Data\bin\Debug\netcoreapp3.1\TerziyskiClima.Data.deps.json
+D:\GitHub\terziyski-clima\TerziyskiClima.Data\bin\Debug\netcoreapp3.1\TerziyskiClima.Data.runtimeconfig.json
+D:\GitHub\terziyski-clima\TerziyskiClima.Data\bin\Debug\netcoreapp3.1\TerziyskiClima.Data.runtimeconfig.dev.json
+D:\GitHub\terziyski-clima\TerziyskiClima.Data\bin\Debug\netcoreapp3.1\TerziyskiClima.Data.dll
+D:\GitHub\terziyski-clima\TerziyskiClima.Data\bin\Debug\netcoreapp3.1\TerziyskiClima.Data.pdb
+D:\GitHub\terziyski-clima\TerziyskiClima.Data\obj\Debug\netcoreapp3.1\TerziyskiClima.Data.csprojAssemblyReference.cache
+D:\GitHub\terziyski-clima\TerziyskiClima.Data\obj\Debug\netcoreapp3.1\TerziyskiClima.Data.AssemblyInfoInputs.cache
+D:\GitHub\terziyski-clima\TerziyskiClima.Data\obj\Debug\netcoreapp3.1\TerziyskiClima.Data.AssemblyInfo.cs
+D:\GitHub\terziyski-clima\TerziyskiClima.Data\obj\Debug\netcoreapp3.1\TerziyskiClima.Data.csproj.CoreCompileInputs.cache
+D:\GitHub\terziyski-clima\TerziyskiClima.Data\obj\Debug\netcoreapp3.1\TerziyskiClima.Data.dll
+D:\GitHub\terziyski-clima\TerziyskiClima.Data\obj\Debug\netcoreapp3.1\TerziyskiClima.Data.pdb
+D:\GitHub\terziyski-clima\TerziyskiClima.Data\obj\Debug\netcoreapp3.1\TerziyskiClima.Data.genruntimeconfig.cache

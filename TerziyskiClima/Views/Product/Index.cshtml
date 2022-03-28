@@ -1,0 +1,41 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@foreach(var product in ViewBag.Products)
+            {
+<h1 class="card-body">
+    @product.Name @product.Price @product.Description
+    @if (ViewBag.Role == "Admin" || ViewBag.Role == "User")
+    {
+        <form method="post" asp-controller="Cart" asp-action="AddToCart">
+            <input type="hidden" class="btn btn-primary" value="@product.Id" name="productId" />
+            <button type="submit">Добави към количка</button>
+        </form>
+    }
+    @if (ViewBag.Role == "Admin")
+    {
+        <form method="get" asp-controller="Product" asp-action="Edit">
+            <input type="hidden" class="btn btn-primary" value="@product.Id" name="txtId" />
+            <button type="submit">Промени</button>
+        </form>
+        <form method="post" asp-controller="Product" asp-action="Delete">
+            <input type="hidden" class="btn btn-primary" value="@product.Id" name="id" />
+            <button type="submit">Изтрий</button>
+        </form>
+    }
+</h1>
+}
+
+@*<script>
+     function addToCart(productId) {
+        $.ajax({
+            type: "POST",
+            url: "Cart/AddToCart",
+            data: { productId }
+        });
+
+        document.getElementById("addToCartForm").hidden = true;
+    });
+</script>*@

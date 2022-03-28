@@ -8,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using TerziyskiClima.Data;
 using TerziyskiClima.Services;
@@ -30,7 +31,27 @@ namespace TerziyskiClima
             services.AddControllersWithViews();
             services.AddDbContext<TerziyskiClimaDbContext>();
             services.AddScoped<UserService>();
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options => { options.LoginPath = "/Login"; options.Cookie.Name = "TerziyskiClimaCookie"; });
+            services.AddScoped<ProductService>();
+            services.AddScoped<AuthenticationService>();
+            services.AddScoped<CartService>();
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
+            {
+                options.LoginPath = "/Login";
+                options.AccessDeniedPath = "/Authentication/AccessDenied";
+                options.Cookie.Name = "TerziyskiClimaCookie";
+            });
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("AdminOnly", policy => policy.RequireClaim(ClaimTypes.Role, "Admin"));
+                options.AddPolicy("NoAnonymous", policy => policy.RequireClaim(ClaimTypes.Role, "Admin", "User"));
+            });
+            services.AddDistributedMemoryCache();
+
+            services.AddSession(options =>
+            {
+                options.Cookie.Name = "cart_session";
+                options.Cookie.IsEssential = true;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,6 +75,8 @@ namespace TerziyskiClima
 
             app.UseAuthorization();
             app.UseCookiePolicy();
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {

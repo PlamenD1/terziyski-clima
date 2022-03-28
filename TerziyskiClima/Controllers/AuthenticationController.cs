@@ -33,7 +33,7 @@ namespace TerziyskiClima.Controllers
                 {
                     new Claim("Id", user.Id.ToString()),
                     new Claim("Email", user.Email),
-                    new Claim("Role", user.Role)
+                    new Claim(ClaimTypes.Role, user.Role)
                 };
                 var ClaimIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 var Principal = new ClaimsPrincipal(ClaimIdentity);
@@ -61,7 +61,7 @@ namespace TerziyskiClima.Controllers
                 {
                     new Claim("Id", user.Id.ToString()),
                     new Claim("Email", user.Email),
-                    new Claim("Role", user.Role)
+                    new Claim(ClaimTypes.Role, user.Role)
                 };
                 var ClaimIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 var Principal = new ClaimsPrincipal(ClaimIdentity);
@@ -75,6 +75,10 @@ namespace TerziyskiClima.Controllers
                 ViewBag.Error = "Invalid Password or Email";
                 return View();
             }
+        }
+        public IActionResult AccessDenied()
+        {
+            return View();
         }
 
         public IActionResult Logout()
