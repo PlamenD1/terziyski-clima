@@ -35,7 +35,12 @@
                         }
                         else
                         {
-                            <li class="nav-item c-nav-item-right nav-username"><p>@User.Claims.ToList()[1].Value</p></li>
+                            <li class="nav-item c-nav-item-right">
+                                <a asp-area="" asp-controller="Cart" asp-action="Index">
+                                    <img class="cart" src="~/resources/cart.jpg"/>
+                                </a>
+                            </li>
+                            <li class="nav-item  nav-username"><p>@User.Claims.ToList()[1].Value</p></li>
                             <li class="nav-item">
                                 <a class="nav-link" asp-area="" asp-controller="Authentication" asp-action="Logout">Излез</a>
                             </li>
