@@ -7,6 +7,15 @@ body {
 
 }
 
+header, p {
+    padding: 0;
+    margin: 0;
+}
+
+nav {
+    margin: 0;
+}
+
 .color-scheme {
     --p-color-1: #03045E;
     --p-color-2: #00B4D8;
@@ -21,6 +30,18 @@ a.navbar-brand {
 }
 
 /* CUSTOM-CSS (c-*)*/
+
+.main-header {
+    box-shadow: 0px 1px 3px rgba(0,0,0,0.5);
+    z-index: 100;
+}
+
+.error {
+    color: red;
+    font-size: calc(0.7vw + 0.9vh);
+    width: 90%;
+    text-align: left;
+}
 
 .c-btn {
     width: 90%;
@@ -37,6 +58,7 @@ a.navbar-brand {
 
 /* navbar*/
 nav {
+    height: 6vh;
     background-color: var(--p-color-2);
    
 }
@@ -49,10 +71,17 @@ nav a {
 .c-nav-item-right {
     margin-left: auto;
 }
+
+.nav-username {
+    padding: 0.5rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+}
 /* end_navbar*/
-
 /* auth */
-
 .auth-container form {
     display: flex;
     flex-direction: row;
@@ -108,11 +137,118 @@ nav a {
 
 
 /* end_auth */
-/* END_CUSTOM-CSS*/
-/* Provide sufficient contrast against white background */
-a {
-    color: #0366d6;
+
+/* Home/Index.cshtml */
+
+.main-page {
+    background-color: var(--p-color-2);
+    height: 87vh;
 }
+
+.main-banner-container {
+    position: relative;
+    height: 40vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-banner-container img {
+    position: absolute;
+    height: 70vh;
+    width: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.main-banner-container h2 {
+    padding: 3vh;
+    color: white;
+    font-size: calc(1.25vw + 1.5vh);
+    width: 100%;
+    /*box-shadow: rgba(0,0,0, 0.5) 1000px 1000px inset;*/
+    text-align: center;
+    z-index: 2;
+}
+
+
+
+.main-page > h2 {
+    padding: 1vh 0.5vw;
+    color: white;
+    font-size: calc(0.9vw + 1.1vh);
+    width: 100%;
+    text-align: center;
+}
+
+.featured-products-container {
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    display: grid;
+    grid-template-columns: 32% 32% 32.1%;
+    grid-gap: 2%;
+    background-color: white;
+}
+
+.featured-products-card {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    height: 32vh;
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+}
+
+.featured-products-card img {
+    position: absolute;
+    height: 30vh;
+}
+
+.featured-products-card > div {
+    height: 32vh;
+    width: 100%;
+    position: absolute;
+    box-shadow: rgba(0,0,0,0.4) 100vw 100vw inset;
+    top: 28vh;
+    transition: top 0.2s linear;
+    color: white;
+}
+
+.featured-products-card:hover > div {
+    cursor: pointer;
+    top: 0;
+}
+
+.featured-products-card > div > h2 {
+    font-size: calc(0.7vw + 0.9vh);
+    padding: 0.25rem 0.5rem;
+}
+
+.featured-products-card > div > div {
+    padding: 2vh 2vw;
+    display: flex;
+    flex-wrap: wrap;
+    flex-shrink: 2;
+}
+
+.featured-products-card > div > div > p:nth-child(2n+1) {
+        font-size: calc(0.5vw + 0.7vh);
+        width: 35%;
+}
+
+    .featured-products-card > div > div > p:nth-child(2n) {
+        font-size: calc(0.5vw + 0.7vh);
+        width: 65%;
+    }
+    /* end_Home/Index.cshtml */
+    /* END_CUSTOM-CSS*/
+    /* Provide sufficient contrast against white background */
+    a {
+        color: #0366d6;
+    }
 
 .btn-primary {
   color: #fff;
@@ -165,9 +301,14 @@ body {
   margin-bottom: 60px;
 }
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 5vh;
+    height: 7vh;
+    background-color: var(--p-color-2);
+    color: white;
+    box-shadow: 0px -1px 3px rgba(0,0,0,0.5);
+    z-index: 100;
 }

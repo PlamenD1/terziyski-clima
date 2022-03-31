@@ -35,3 +35,15 @@ D:\GitHub\terziyski-clima\TerziyskiClima.Services\obj\Debug\netcoreapp3.1\Terziy
 D:\GitHub\terziyski-clima\TerziyskiClima.Services\obj\Debug\netcoreapp3.1\TerziyskiClima.Services.csproj.CopyComplete
 D:\GitHub\terziyski-clima\TerziyskiClima.Services\obj\Debug\netcoreapp3.1\TerziyskiClima.Services.dll
 D:\GitHub\terziyski-clima\TerziyskiClima.Services\obj\Debug\netcoreapp3.1\TerziyskiClima.Services.pdb
+D:\TerziyskiClima\TerziyskiClima.Services\bin\Debug\netcoreapp3.1\TerziyskiClima.Services.deps.json
+D:\TerziyskiClima\TerziyskiClima.Services\bin\Debug\netcoreapp3.1\TerziyskiClima.Services.dll
+D:\TerziyskiClima\TerziyskiClima.Services\bin\Debug\netcoreapp3.1\TerziyskiClima.Services.pdb
+D:\TerziyskiClima\TerziyskiClima.Services\bin\Debug\netcoreapp3.1\TerziyskiClima.Data.dll
+D:\TerziyskiClima\TerziyskiClima.Services\bin\Debug\netcoreapp3.1\TerziyskiClima.Data.pdb
+D:\TerziyskiClima\TerziyskiClima.Services\obj\Debug\netcoreapp3.1\TerziyskiClima.Services.csprojAssemblyReference.cache
+D:\TerziyskiClima\TerziyskiClima.Services\obj\Debug\netcoreapp3.1\TerziyskiClima.Services.AssemblyInfoInputs.cache
+D:\TerziyskiClima\TerziyskiClima.Services\obj\Debug\netcoreapp3.1\TerziyskiClima.Services.AssemblyInfo.cs
+D:\TerziyskiClima\TerziyskiClima.Services\obj\Debug\netcoreapp3.1\TerziyskiClima.Services.csproj.CoreCompileInputs.cache
+D:\TerziyskiClima\TerziyskiClima.Services\obj\Debug\netcoreapp3.1\TerziyskiClima.Services.csproj.CopyComplete
+D:\TerziyskiClima\TerziyskiClima.Services\obj\Debug\netcoreapp3.1\TerziyskiClima.Services.dll
+D:\TerziyskiClima\TerziyskiClima.Services\obj\Debug\netcoreapp3.1\TerziyskiClima.Services.pdb

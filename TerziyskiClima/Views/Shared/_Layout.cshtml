@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm  box-shadow mb-3">
+    <header class="main-header">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm  box-shadow">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">TerziyskiClima</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -24,14 +24,8 @@
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Product" asp-action="Index">Продукти</a>
                         </li>
-                        @*
-        <li class="nav-item">
-            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </li>
-                        *@
                         @if (!User.Identity.IsAuthenticated)
                         {
-
                             <li class="nav-item c-nav-item-right">
                                 <a class="nav-link" asp-area="" asp-controller="Authentication" asp-action="Register">Регистрация</a>
                             </li>
@@ -41,8 +35,8 @@
                         }
                         else
                         {
-
-                            <li class="nav-item c-nav-item-right">
+                            <li class="nav-item c-nav-item-right nav-username"><p>@User.Claims.ToList()[1].Value</p></li>
+                            <li class="nav-item">
                                 <a class="nav-link" asp-area="" asp-controller="Authentication" asp-action="Logout">Излез</a>
                             </li>
                         }
@@ -52,12 +46,10 @@
         </nav>
     </header>
     <div class="container">
-        <main role="main" class="pb-3">
             @RenderBody()
-        </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="footer">
         <div class="container">
             &copy; 2022 - TerziyskiClima - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>

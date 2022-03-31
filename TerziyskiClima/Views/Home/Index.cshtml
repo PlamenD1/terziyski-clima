@@ -2,7 +2,34 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center color-scheme">
-    <p class="display-4">Welcome, @if (User.Identity.IsAuthenticated) { <p>@User.Claims.ToList()[1].Value</p> }</p>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="page-container main-page">
+    <header class="main-banner-container">
+        <img src="~/resources/main-banner.jpg" />
+        <h2>Terziyski Clima</h2>
+    </header>
+    <h2>Специални оферти</h2>
+    <div class="featured-products-container">
+        @foreach (var item in ViewBag.FeaturedProducts)
+        { 
+            <a  asp-area="" asp-controller="Product" asp-action="Index">
+                <div class="featured-products-card">
+                    <img src="~/resources/cartoon-AC.png" />
+                    <div>
+                        <h2>
+                            @item.Name
+                        </h2>
+                        <div>
+                            <p >Цена</p>
+                            <p class="font-weight-bold">@item.Price лв.</p>
+                            <p>Описание</p>
+                            <p class="font-weight-bold">@item.Description</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        }
+    </div>
 </div>
+
+
+    @*<p class="display-4">Welcome, @if (User.Identity.IsAuthenticated) { <p>@User.Claims.ToList()[1].Value</p> }</p>*@
