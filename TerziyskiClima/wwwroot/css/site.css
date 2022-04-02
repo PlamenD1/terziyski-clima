@@ -245,11 +245,98 @@ nav a {
         width: 35%;
 }
 
-    .featured-products-card > div > div > p:nth-child(2n) {
-        font-size: calc(0.5vw + 0.7vh);
-        width: 65%;
-    }
-    /* end_Home/Index.cshtml */
+.featured-products-card > div > div > p:nth-child(2n) {
+    font-size: calc(0.5vw + 0.7vh);
+    width: 65%;
+}
+/* end_Home/Index.cshtml */
+
+/* Producct/Index.cshtml */
+
+.products-banner-container {
+    position: relative;
+    height: 37vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 2vh;
+}
+
+.products-banner-container img {
+    position: absolute;
+    height: 37vh;
+    width: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: 33.33% 33.33% 33.34%;
+/*    grid-gap: 2%;*/
+}
+
+.card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: aliceblue;
+    padding: 2vh;
+    margin-bottom: 10%;
+    margin-left: 5%;
+    margin-right: 5%;
+    /*margin-right: 10%;*/
+}
+
+.card-container h1 {
+    font-size: calc(0.8vw + 0.9vh);
+    font-weight: bold;
+    margin-top: 1vh;
+}
+
+.card-container img {
+    width: 90%;
+    height: auto;
+}
+
+.card-container p {
+    font-size: calc(0.5vw + 0.6vh);
+}
+
+.card-container form {
+    width: 90%;
+    margin-top: 1vh;
+}
+
+.card-container form button {
+    width: 100%;
+    transition: all 75ms linear;
+    height: 3vh;
+}
+
+.card-container form:nth-child(5) button {
+    background-color: darkolivegreen;
+    color: white;
+    border: none;
+}
+
+.card-container form:nth-child(5) button:hover {
+    background-color: green;
+}
+
+.card-container form:nth-child(7) button {
+    background-color: darkred;
+    color: white;
+    border: none;
+}
+
+.card-container form:nth-child(7) button:hover {
+    background-color: red;
+}
+
+    /* end_Producct/Index.cshtml */
     /* END_CUSTOM-CSS*/
     /* Provide sufficient contrast against white background */
     a {

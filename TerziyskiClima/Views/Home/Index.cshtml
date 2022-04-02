@@ -9,20 +9,20 @@
     </header>
     <h2>Специални оферти</h2>
     <div class="featured-products-container">
-        @foreach (var item in ViewBag.FeaturedProducts)
-        { 
+        @for (int i = 0; i < 3; i++)
+        {
             <a  asp-area="" asp-controller="Product" asp-action="Index">
                 <div class="featured-products-card">
-                    <img src="~/resources/cartoon-AC.png" />
+                    <img src=@String.Format("resources/ac{0}.jpg", i + 1) />
                     <div>
                         <h2>
-                            @item.Name
+                            @ViewBag.FeaturedProducts[i].Name
                         </h2>
                         <div>
                             <p >Цена</p>
-                            <p class="font-weight-bold">@item.Price лв.</p>
+                            <p class="font-weight-bold">@ViewBag.FeaturedProducts[i].Price лв.</p>
                             <p>Описание</p>
-                            <p class="font-weight-bold">@item.Description</p>
+                            <p class="font-weight-bold">@ViewBag.FeaturedProducts[i].Description</p>
                         </div>
                     </div>
                 </div>
