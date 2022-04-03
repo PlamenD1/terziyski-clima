@@ -4,15 +4,65 @@
 @{
 }
 
-@foreach(var item in ViewBag.Items)
-            {
-                <h1>Продукт: @item.Product.Name  / Количество: @item.Quantity</h1>
-                <form method="post" asp-action="RemoveFromCart" asp-controller="Cart">
+<div class="page-container cart-container">
+    <div>
+        @foreach (var item in ViewBag.Items)
+        {
+            <div class="cart-product-container">
+                <img src=@String.Format("resources/ac{0}.jpg", new Random().Next(1, 5)) />
+                <div>
+                    <h1>@item.Product.Name </h1>
+                    <p>@item.Product.Price лв.</p>
+                </div>
+                <div>
+                    <h1>Количество</h1>
+                    <p>x @item.Quantity</p>
+                </div>
+                <form class="remove" method="post" asp-action="RemoveFromCart" asp-controller="Cart">
                     <input type="hidden" value="@item.Product.Id" name="productId" />
-                    <button type="submit" >Премахни</button>
+                    <button type="submit">X</button>
+                </form>
+            </div>
+        }
+    </div>
+    <div class="cart-receipt-placeholder">
+        <div class="cart-receipt">
+            <h1>Кошница</h1>
+            @if (ViewBag.Items.Count > 0)
+            {
+                int price = 0;
+                <div>
+                    @foreach (var item in ViewBag.Items)
+                    {
+                        <div class="cart-receipt-item">
+                            <p>@item.Product.Name</p>
+                            <p>x @item.Quantity</p>
+                            <p>@item.Product.Price лв.</p>
+                        </div>
+                    }
+                    @for (int i = 0; i < ViewBag.Items.Count; i++)
+                    {
+                        price += ViewBag.Items[i].Product.Price * ViewBag.Items[i].Quantity;
+                    }
+                    <div class="cart-receipt-item receipt-total">
+                        <p>Общо:</p>
+                        <p> </p>
+                        <p>@price лв.</p>
+                    </div>
+                </div>
+                <form method="post" asp-action="PurchaseFromCart" asp-controller="Purchase">
+                    <button type="submit">Закупи</button>
                 </form>
             }
+            else
+            {
+                <div class="no-products">
+                    <p>НЯМА ПРОДУКТИ</p>
+                </div>
+            }
 
-<form method="post" asp-action="PurchaseFromCart" asp-controller="Purchase">
-    <button type="submit">Закупи</button>
-</form>
+        </div>
+    </div>
+</div>
+
+

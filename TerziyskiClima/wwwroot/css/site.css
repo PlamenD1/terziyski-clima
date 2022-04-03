@@ -32,8 +32,9 @@ a.navbar-brand {
 /* CUSTOM-CSS (c-*)*/
 
 .cart {
-    height: 80%;
-    width: 2vw;
+    height: 3vh;
+    aspect-ratio: 1;
+    margin-top: 0.5vh;
     color: white;
 }
 
@@ -251,7 +252,7 @@ nav a {
 }
 /* end_Home/Index.cshtml */
 
-/* Producct/Index.cshtml */
+/* Product/Index.cshtml */
 
 .products-banner-container {
     position: relative;
@@ -336,12 +337,149 @@ nav a {
     background-color: red;
 }
 
-    /* end_Producct/Index.cshtml */
-    /* END_CUSTOM-CSS*/
-    /* Provide sufficient contrast against white background */
-    a {
-        color: #0366d6;
-    }
+
+/* end_Product/Index.cshtml */
+/* Cart/Index.cshtml */
+.cart-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.cart-container > div:nth-child(1) {
+    width: 70%;
+}
+
+.cart-container > div:nth-child(2) {
+    width: 30%;
+    
+}
+
+.cart-product-container {
+    display: flex;
+    padding: 2vh;
+    background-color: aliceblue;
+    margin-top: 2vh;
+    color: black;
+    border-radius: 10px;
+    border: solid 1px var(--p-color-2);
+    align-items: center;
+    margin-bottom: 2vh;
+}
+
+.cart-product-container img {
+    width: 20%;
+}
+
+.cart-product-container div {
+    margin-left: 2vw;
+    width: 30%;
+}
+
+.cart-product-container h1 {
+
+    font-size: calc(1vw + 1vh);
+}
+
+.cart-product-container p {
+    font-size: calc(0.6vw + 0.8vh);
+}
+
+.cart-product-container .remove {
+    margin-left: auto;
+    margin-right: 1vw;
+}
+
+.cart-product-container .remove button {
+    border: none;
+    color: red;
+/*    font-weight: bold;
+*/    background-color: transparent;
+    font-size: calc(1vw + 1vh);
+}
+
+
+.cart-receipt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2vh;
+    background-color: aliceblue;
+    border: solid 1px var(--p-color-2);
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.4);
+}
+
+.cart-receipt h1 {
+    font-size: calc(1vw + 1vh);
+    margin-top: 1vh;
+}
+
+.cart-receipt > div {
+    width: 90%;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+}
+
+
+.cart-receipt-item {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 0.5vh;
+}
+
+ .cart-receipt-item p {
+    font-size: calc(0.55vw + 0.7vh);
+    margin-left: 0.5vw;
+}
+
+.receipt-total {
+    border-top: solid 1px black;
+}
+
+.cart-receipt-item p:nth-child(1) {
+    font-weight: bold;
+    width: 40%;
+}
+
+.cart-receipt-item p:last-child {
+    margin-left: auto;
+    margin-right: 0.5vw;
+}
+
+.cart-receipt .no-products {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2vh;
+}
+
+.cart-receipt form {
+    margin-top: 3vh;
+    margin-bottom: 2vh;
+    width: 90%;
+}
+
+.cart-receipt button {
+    border: none;
+    color: white;
+    background-color: var(--p-color-2);
+    font-size: calc(0.5vw + 0.6vh);
+    height: 3vh;
+    width: 100%;
+}
+
+
+
+/* end_Cart/Index.cshtml */
+
+/* END_CUSTOM-CSS*/
+
+/* Provide sufficient contrast against white background */
+a {
+    color: #0366d6;
+}
 
 .btn-primary {
   color: #fff;
