@@ -21,6 +21,7 @@ nav {
     --p-color-2: #00B4D8;
     --p-color-3: #90E0EF;
     --p-color-4: #CAF0F8;
+    --s-color-1: #0a89ac;
 }
 
 a.navbar-brand {
@@ -96,6 +97,8 @@ nav a {
     justify-content: center;
 }
 
+
+
 .c-auth-input {
     width: 90%;
     margin-bottom: 1vh;
@@ -105,6 +108,7 @@ nav a {
 .c-auth-label {
     width: 90%;
     margin: 0;
+    font-size: calc(0.6vw + 0.7vh);
 }
 
 .auth-container .c-register .c-auth-input:nth-child(3),
@@ -135,12 +139,15 @@ nav a {
     background-color: white;
  }
 
+.register-container {
+    margin-top: 4vh !important;
+}
+
 .auth-container h1 {
     margin-bottom: 2vh;
     color: var(--p-color-2);
+    font-size: calc(1.3vw + 1.6vh);
 }
-
-
 
 
 /* end_auth */
@@ -178,8 +185,6 @@ nav a {
     text-align: center;
     z-index: 2;
 }
-
-
 
 .main-page > h2 {
     padding: 1vh 0.5vw;
@@ -242,8 +247,8 @@ nav a {
 }
 
 .featured-products-card > div > div > p:nth-child(2n+1) {
-        font-size: calc(0.5vw + 0.7vh);
-        width: 35%;
+    font-size: calc(0.5vw + 0.7vh);
+    width: 35%;
 }
 
 .featured-products-card > div > div > p:nth-child(2n) {
@@ -337,8 +342,78 @@ nav a {
     background-color: red;
 }
 
+.add-product-btn-container {
+    width: 100%;
+    margin-bottom: 2vh;
+}
+
+.add-product-btn-container button {
+    background-color: var(--p-color-2);
+    color: white;
+    height: 4vh;
+    width: 100%;
+    font-size: calc(0.7vw + 0.9vh);
+    border: none;
+    transition: all 200ms ease-in;
+}
+
+.add-product-btn-container button:hover {
+    background-color: var(--s-color-1);
+}
 
 /* end_Product/Index.cshtml */
+
+/* Product/Add.cshtml & Product/Edit.cshtml */
+
+.action-container {
+    display: flex;
+    margin-left: 25%;
+    margin-top: 10%;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    padding: 3vh 1vw 3vh 1vw;
+    box-shadow: rgba(0,0,0,0.4) 0px 0px 10px;
+    background-color: white;
+}
+
+.action-container form {
+    width: 90%;
+
+}
+
+.action-container label {
+    font-size: calc(0.6vw + 0.7vh);
+    margin-top: 0.5vh;
+    margin-bottom: 0.5vh;
+}
+
+.action-container input {
+    width: 100%;
+}
+
+.action-container h1 {
+    margin-bottom: 2vh;
+    color: var(--p-color-2);
+    font-size: calc(1.3vw + 1.6vh);
+    font-weight: bold;
+}
+
+
+.action-container button {
+    width: 100%;
+    background-color: var(--p-color-2);
+    color: white;
+    font-size: calc(0.6vw + 0.7vh);
+    border: none;
+}
+
+.action-container button:hover {
+    background-color: var(--s-color-1);
+}
+
+/* end_Product/Add.cshtml & end_Product/Edit.cshtml */
+
 /* Cart/Index.cshtml */
 .cart-container {
     display: flex;
@@ -376,7 +451,6 @@ nav a {
 }
 
 .cart-product-container h1 {
-
     font-size: calc(1vw + 1vh);
 }
 
@@ -392,8 +466,7 @@ nav a {
 .cart-product-container .remove button {
     border: none;
     color: red;
-/*    font-weight: bold;
-*/    background-color: transparent;
+    background-color: transparent;
     font-size: calc(1vw + 1vh);
 }
 

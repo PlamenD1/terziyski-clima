@@ -8,6 +8,13 @@
     <header class="products-banner-container">
         <img src="~/resources/banner-3.png"/>
     </header>
+    @if (ViewBag.Role == "Admin")
+    {
+        <form class="add-product-btn-container" method="get" asp-controller="Product" asp-action="Add">
+            <input type="hidden" class="btn btn-primary" />
+            <button>Добави продукт</button>
+        </form>
+    }
     <div class="card-grid">
         @for (int i = 0; i < 3; i++)
         {
