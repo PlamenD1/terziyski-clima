@@ -23,12 +23,20 @@ namespace TerziyskiClima.Services
             Cart cart = cartString.ToCart();
             foreach (var item in cart.Items)
             {
-                for(int i = 0; i < item.Quantity; i++)
-                {
-                    Purchase purchase = new Purchase(userId, item.Product.Id, DateTime.Now);
-                    purchaseRepository.Add(purchase);
-                }
+                
+                Purchase purchase = new Purchase(userId, item.Product.Id, DateTime.Now, item.Quantity);
+                purchaseRepository.Add(purchase);
             }
+        }
+
+        public List<Purchase> GetPurchasesByUserId(int userId)
+        {
+            return purchaseRepository.GetPurchasesByUserId(userId);
+        }
+
+        public void Delete(int id)
+        {
+            purchaseRepository.Remove(id);
         }
     }
 }

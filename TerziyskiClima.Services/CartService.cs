@@ -4,6 +4,7 @@ using System.Text;
 using TerziyskiClima.Services.Extensions;
 using TerziyskiClima.Data.Models;
 using TerziyskiClima.Services.Interfaces;
+using System.Linq;
 
 namespace TerziyskiClima.Services
 {
@@ -12,7 +13,9 @@ namespace TerziyskiClima.Services
         public string AddToCart(Product productToAdd, string cartString)
         {
             Cart cart = cartString.ToCart();
-            cart.Items.Add(new CartItem(productToAdd, 1));
+            CartItem alreadyExistingItem = cart.Items.Where(x => x.Product.Id == productToAdd.Id).FirstOrDefault();
+            if (alreadyExistingItem != null) alreadyExistingItem.Quantity += 1;
+            else cart.Items.Add(new CartItem(productToAdd, 1));
             return cart.ToString();
         }
 
@@ -20,6 +23,14 @@ namespace TerziyskiClima.Services
         {
             Cart cart = cartString.ToCart();
             cart.Items.RemoveAll(x => x.Product.Id == productId);
+            return cart.ToString();
+        }
+
+        public string ChangeQuantity(int productId, int quantity, string cartString)
+        {
+            Cart cart = cartString.ToCart();
+            CartItem cartItem = cart.Items.Where(x => x.Product.Id == productId).FirstOrDefault();
+            if (cartItem != null) cartItem.Quantity = quantity;
             return cart.ToString();
         }
 

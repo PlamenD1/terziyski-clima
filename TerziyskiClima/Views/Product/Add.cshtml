@@ -3,16 +3,27 @@
 *@
 @{
 }
+
+@using TerziyskiClima.Models.ProductViewModels
+@model ProductAddViewModel
+
 <div class="action-container">
     <h1>Добави продукт</h1>
     <form method="post">
         <label>Име</label>
-        <input class="form-control" type="text" name="txtName" />
+        <input class="form-control" asp-for="@Model.Name" type="text" />
+        <span asp-validation-for="@Model.Name" class="text-danger"></span>
         <label>Цена</label>
-        <input class="form-control" type="number" min="0" name="txtPrice" />
+        <input class="form-control" asp-for="@Model.Price" step="0.01" type="number" />
+        <span asp-validation-for="@Model.Price" class="text-danger"></span>
         <label>Описание</label>
-        <input class="form-control" type="text" name="txtDescription" />
+        <input class="form-control" asp-for="@Model.Description" type="text" />
+        <span asp-validation-for="@Model.Description" class="text-danger"></span>
         <br />
-        <button class="btn btn-success">Добави</button>
+        <button type="submit" class="btn btn-success">Добави</button>
     </form>
 </div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

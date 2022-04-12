@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using TerziyskiClima.Data;
 using TerziyskiClima.Data.Models;
@@ -15,10 +16,9 @@ namespace TerziyskiClima.Services
         {
             userRepository = new UserRepository(context);
         }
-        public User Register(string name, string surname, string address, string phone, string email, string password, string confirmPassword, string role)
+        public User Register(string name, string surname, string address, string phone, string email, string password)
         {
-            if (password != confirmPassword)
-                return null;
+            string role = userRepository.GetUsers().Count == 0 ? "Admin" : "User";
             string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
             User user = new User(name, surname, address, phone, email, hashedPassword, role);
             userRepository.Add(user);
@@ -38,6 +38,26 @@ namespace TerziyskiClima.Services
             {
                 return null;
             }
+        }
+
+        public List<User> GetUsers()
+        {
+            return userRepository.GetUsers();
+        }
+
+        public User GetUserById(int id)
+        {
+            return userRepository.GetUsers().Where(x => x.Id == id).FirstOrDefault();
+        }
+
+        public bool EmailIsUsed(string email)
+        {
+            return userRepository.GetByEmail(email) != null;
+        }
+
+        public bool PhoneIsUsed(string phone)
+        {
+            return userRepository.GetByPhone(phone) != null;
         }
     }
 }

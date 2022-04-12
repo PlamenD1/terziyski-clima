@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using System.Security.Claims
+
+<!DOCTYPE html>
 <html lang="en" class="color-scheme">
 <head>
     <meta charset="utf-8" />
@@ -35,9 +37,18 @@
                         }
                         else
                         {
+                            if (@User.Claims.ToList()[2].Value == "Admin")
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="User" asp-action="Index">Потребители</a>
+                                </li>
+                            }
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Purchase" asp-action="Index">Покупки</a>
+                            </li>
                             <li class="nav-item c-nav-item-right">
                                 <a asp-area="" asp-controller="Cart" asp-action="Index">
-                                    <img class="cart" src="~/resources/cart.jpg"/>
+                                    <img class="cart" src="~/resources/cart.jpg" />
                                 </a>
                             </li>
                             <li class="nav-item  nav-username"><p>@User.Claims.ToList()[1].Value</p></li>

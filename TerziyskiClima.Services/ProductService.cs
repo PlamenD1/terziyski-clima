@@ -17,14 +17,14 @@ namespace TerziyskiClima.Services
             productRepository = new ProductRepository(_context);
         }
 
-        public Product Add(string name, decimal price, string description)
+        public Product Add(string name, double price, string description)
         {
             Product productToAdd = new Product(name, price, description);
             productRepository.Add(productToAdd);
             return productToAdd;
         }
 
-        public void Edit(int id, string name, decimal price, string description)
+        public void Edit(int id, string name, double price, string description)
         {
             Product editedProduct = new Product(name, price, description);
             productRepository.Edit(id, editedProduct);
@@ -42,7 +42,10 @@ namespace TerziyskiClima.Services
 
         public List<Product> GetProducts()
         {
-            return productRepository.GetProducts();
+            List<Product> products = productRepository.GetProducts();
+            if (products != null)
+                return products;
+            else return new List<Product>();
         }
     }
 }

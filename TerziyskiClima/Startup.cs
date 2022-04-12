@@ -37,7 +37,7 @@ namespace TerziyskiClima
             services.AddScoped<PurchaseService>();
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
             {
-                options.LoginPath = "/Login";
+                options.LoginPath = "/Authentication/Login";
                 options.AccessDeniedPath = "/Authentication/AccessDenied";
                 options.Cookie.Name = "TerziyskiClimaCookie";
             });

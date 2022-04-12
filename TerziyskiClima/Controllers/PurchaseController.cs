@@ -5,11 +5,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TerziyskiClima.Data.Models;
 using TerziyskiClima.Services;
 
 namespace TerziyskiClima.Controllers
 {
-    [Authorize(Policy = "NoAnonymous")]
     public class PurchaseController : Controller
     {
         private readonly PurchaseService purchaseService;
@@ -21,11 +21,15 @@ namespace TerziyskiClima.Controllers
             cartService = _cartService;
         }
 
+        [Authorize(Policy = "NoAnonymous")]
         public IActionResult Index()
         {
-            return View();
+            int userId = int.Parse(User.Claims.Where(x => x.Type == "Id").FirstOrDefault().Value);
+            List<Purchase> purchases = purchaseService.GetPurchasesByUserId(userId);
+            return View(purchases);
         }
 
+        [Authorize(Policy = "NoAnonymous")]
         public IActionResult PurchaseFromCart()
         {
             int userId = int.Parse(HttpContext.User.Claims.Where(x => x.Type == "Id").FirstOrDefault().Value);
@@ -34,6 +38,19 @@ namespace TerziyskiClima.Controllers
             string newCartString = cartService.ClearCart(cartString);
             HttpContext.Session.SetString(Global.CartSessionKey, newCartString);
 
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        [Authorize(Policy = "NoAnonymous")]
+        public IActionResult Delete(int id, int? _userId)
+        {
+            purchaseService.Delete(id);
+            if (_userId != null)
+            {
+                int userId = Convert.ToInt32(_userId);
+                return RedirectToAction("Review", "User", new {userId});
+            }
             return RedirectToAction("Index");
         }
     }

@@ -26,11 +26,7 @@ namespace TerziyskiClima.Controllers
         public IActionResult Index()
         {
             List<Product> featuredProducts = productService.GetProducts();
-            ViewBag.FeaturedProducts = featuredProducts;
-            ViewBag.LoggedIn = HttpContext.User.Claims.Count()>0;
-            if(ViewBag.LoggedIn)
-               ViewBag.Email = HttpContext.User.Claims.ToList()[1].Value;
-            return View();
+            return View(featuredProducts);
         }
 
         public IActionResult Privacy()

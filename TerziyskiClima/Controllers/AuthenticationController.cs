@@ -8,6 +8,7 @@ using TerziyskiClima.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Security.Claims;
+using TerziyskiClima.Models.Authentication;
 
 namespace TerziyskiClima.Controllers
 {
@@ -20,60 +21,80 @@ namespace TerziyskiClima.Controllers
         }
         public IActionResult Register()
         {
-            return View();
+            RegisterViewModel viewModel = new RegisterViewModel();
+            return View(viewModel);
         }
 
         [HttpPost]
-        public IActionResult Register(string txtFirstName, string txtLastName, string txtEmail, string txtAddress, string txtPhone, string txtPassword, string txtConfirmPassword, string txtRole)
+        public IActionResult Register(RegisterViewModel viewModel)
         {
-            User user = userService.Register(txtFirstName, txtLastName, txtAddress, txtPhone, txtEmail, txtPassword, txtConfirmPassword, txtRole);
-            if(user != null)
+            if (ModelState.IsValid)
             {
-                var claims = new List<Claim>
+                User user = userService.Register(
+                    viewModel.Name,
+                    viewModel.Surname,
+                    viewModel.Address,
+                    viewModel.Phone,
+                    viewModel.Email,
+                    viewModel.Password
+                    );
+                if (user != null)
                 {
-                    new Claim("Id", user.Id.ToString()),
-                    new Claim("Email", user.Email),
-                    new Claim(ClaimTypes.Role, user.Role)
-                };
-                var ClaimIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-                var Principal = new ClaimsPrincipal(ClaimIdentity);
-                var Props = new AuthenticationProperties();
-                HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, Principal, Props).Wait();
-                return RedirectToAction("Index", "Home");
+                    var claims = new List<Claim>
+                    {
+                        new Claim("Id", user.Id.ToString()),
+                        new Claim("Email", user.Email),
+                        new Claim(ClaimTypes.Role, user.Role)
+                    };
+                    var ClaimIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                    var Principal = new ClaimsPrincipal(ClaimIdentity);
+                    var Props = new AuthenticationProperties();
+                    HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, Principal, Props).Wait();
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    return View(viewModel);
+                }
             }
-            else
-            {
-                return View();
-            }
+            else return View(viewModel);
         }
 
         public IActionResult Login()
         {
-            return View();
+            LoginViewModel viewModel = new LoginViewModel();
+            return View(viewModel);
         }
         [HttpPost]
-        public IActionResult Login(string txtEmail, string txtPassword)
+        public IActionResult Login(LoginViewModel viewModel)
         {
-            User user = userService.Login(txtEmail, txtPassword);
-            if (user != null)
+            if (ModelState.IsValid)
             {
-                var claims = new List<Claim>
+                User user = userService.Login(viewModel.Email, viewModel.Password);
+                if (user != null)
                 {
-                    new Claim("Id", user.Id.ToString()),
-                    new Claim("Email", user.Email),
-                    new Claim(ClaimTypes.Role, user.Role)
-                };
-                var ClaimIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-                var Principal = new ClaimsPrincipal(ClaimIdentity);
-                var Props = new AuthenticationProperties();
-                HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, Principal, Props).Wait();
-                return RedirectToAction("Index", "Home");
+                    var claims = new List<Claim>
+                    {
+                        new Claim("Id", user.Id.ToString()),
+                        new Claim("Email", user.Email),
+                        new Claim(ClaimTypes.Role, user.Role)
+                    };
+                    var ClaimIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                    var Principal = new ClaimsPrincipal(ClaimIdentity);
+                    var Props = new AuthenticationProperties();
+                    HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, Principal, Props).Wait();
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    viewModel.Error = "Неправилна парола или email";
+                    viewModel.ShowError = true;
+                    return View(viewModel);
+                }
             }
-                
             else
             {
-                ViewBag.Error = "Invalid Password or Email";
-                return View();
+                return View(viewModel);
             }
         }
         public IActionResult AccessDenied()
@@ -85,6 +106,26 @@ namespace TerziyskiClima.Controllers
         {
             HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Index", "Home");
+        }
+
+        public IActionResult VerifyEmail(string email)
+        {
+            if (userService.EmailIsUsed(email))
+            {
+                return Json($"E-mail {email} вече се използва");
+            }
+
+            return Json(true);
+        }
+
+        public IActionResult VerifyPhone(string phone)
+        {
+            if (userService.PhoneIsUsed(phone))
+            {
+                return Json($"Телефонът {phone} вече се използва");
+            }
+
+            return Json(true);
         }
     }
 }

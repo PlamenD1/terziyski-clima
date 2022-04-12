@@ -4,9 +4,12 @@
 @{
 }
 
+@using TerziyskiClima.Services
+@model List<CartItem>
+
 <div class="page-container cart-container">
     <div>
-        @foreach (var item in ViewBag.Items)
+        @foreach (var item in Model)
         {
             <div class="cart-product-container">
                 <img src=@String.Format("resources/ac{0}.jpg", new Random().Next(1, 5)) />
@@ -16,7 +19,15 @@
                 </div>
                 <div>
                     <h1>Количество</h1>
-                    <p>x @item.Quantity</p>
+                    <p>
+                        x <form method="post" asp-action="ChangeQuantity" asp-controller="Cart">
+                            <input type="hidden" value="@item.Product.Id" name="productId" />
+                            <input id="origQuantity" type="hidden" value="@item.Quantity" />
+                            <input id="quantity" asp-for="@item.Quantity" type="number" name="quantity" />
+                            <span asp-validation-for="@item.Quantity" class="text-danger"></span>
+                            <button hidden="hidden" id="buttonQuantity" type="submit">Запази</button>
+                        </form>
+                    </p>
                 </div>
                 <form class="remove" method="post" asp-action="RemoveFromCart" asp-controller="Cart">
                     <input type="hidden" value="@item.Product.Id" name="productId" />
@@ -28,11 +39,11 @@
     <div class="cart-receipt-placeholder">
         <div class="cart-receipt">
             <h1>Кошница</h1>
-            @if (ViewBag.Items.Count > 0)
+            @if (Model.Count > 0)
             {
-                int price = 0;
+                double price = 0;
                 <div>
-                    @foreach (var item in ViewBag.Items)
+                    @foreach (var item in Model)
                     {
                         <div class="cart-receipt-item">
                             <p>@item.Product.Name</p>
@@ -40,9 +51,9 @@
                             <p>@item.Product.Price лв.</p>
                         </div>
                     }
-                    @for (int i = 0; i < ViewBag.Items.Count; i++)
+                    @foreach (var item in Model)
                     {
-                        price += ViewBag.Items[i].Product.Price * ViewBag.Items[i].Quantity;
+                        price += item.Product.Price * item.Quantity;
                     }
                     <div class="cart-receipt-item receipt-total">
                         <p>Общо:</p>
@@ -60,9 +71,24 @@
                     <p>НЯМА ПРОДУКТИ</p>
                 </div>
             }
-
         </div>
     </div>
 </div>
 
 
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+    <script>
+        document.getElementById("quantity").addEventListener("input", function (e) {
+            if (this.value == document.getElementById("origQuantity").value) {
+                document.getElementById("buttonQuantity").hidden = true;
+                console.log("Hidden");
+            }
+            else {
+                document.getElementById("buttonQuantity").hidden = false;
+                console.log("Shown");
+
+            }
+        })
+    </script>
+}

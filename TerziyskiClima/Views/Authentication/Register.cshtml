@@ -3,24 +3,38 @@
 *@
 @{
 }
+
+@using TerziyskiClima.Models.Authentication
+@model RegisterViewModel
+
 <div class="auth-container register-container">
     <h1>Регистрация</h1>
     <form class="c-register" method="post">
         <p class="c-auth-label">Първо име*</p>
         <p class="c-auth-label">Фамилия*</p>
-        <input class="form-control c-auth-input" type="text" name="txtFirstName" placeholder="Първо име..." />
-        <input class="form-control c-auth-input" type="text" name="txtLastName" placeholder="Фамилия..." />
+        <input class="form-control c-auth-input" type="text" asp-for="@Model.Name" placeholder="Първо име..." />
+        <span asp-validation-for="@Model.Name" class="text-danger"></span>
+        <input class="form-control c-auth-input" type="text" asp-for="@Model.Surname" placeholder="Фамилия..." />
+        <span asp-validation-for="@Model.Surname" class="text-danger"></span>
         <p class="c-auth-label">E-mail*</p>
-        <input class="form-control c-auth-input" type="text" name="txtEmail" placeholder="E-mail..." />
+        <input class="form-control c-auth-input" type="text" asp-for="@Model.Email" placeholder="E-mail..." />
+        <span asp-validation-for="@Model.Email" class="text-danger"></span>
         <p class="c-auth-label">Адрес*</p>
-        <input class="form-control c-auth-input" type="text" name="txtAddress" placeholder="Адрес..." />
+        <input class="form-control c-auth-input" type="text" asp-for="@Model.Address" placeholder="Адрес..." />
+        <span asp-validation-for="@Model.Address" class="text-danger"></span>
         <p class="c-auth-label">Телефон*</p>
-        <input class="form-control c-auth-input" type="text" name="txtPhone" placeholder="Телефон..." />
+        <input class="form-control c-auth-input" type="text" asp-for="@Model.Phone" placeholder="Телефон..." />
+        <span asp-validation-for="@Model.Phone" class="text-danger"></span>
         <p class="c-auth-label">Парола*</p>
-        <input class="form-control c-auth-input" type="password" name="txtPassword" placeholder="Парола..." />
-        <input class="form-control c-auth-input" type="password" name="txtConfirmPassword" placeholder="Потвърди парола..." />
-        <select class="form-control c-auth-input" name="txtRole"><option>Admin</option><option>User</option></select>
+        <input class="form-control c-auth-input" type="password" asp-for="@Model.Password" placeholder="Парола..." />
+        <span asp-validation-for="@Model.Password" class="text-danger"></span>
+        <input class="form-control c-auth-input" type="password" asp-for="@Model.ConfirmPassword" placeholder="Потвърди парола..." />
+        <span asp-validation-for="@Model.ConfirmPassword" class="text-danger"></span>
         <p class="font-italic c-auth-label">* Задължителни полета</p>
-        <button class="btn c-btn">Регистрирай се</button>
+        <button type="submit" class="btn c-btn">Регистрирай се</button>
     </form>
 </div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

@@ -3,3 +3,19 @@
 *@
 @{
 }
+
+@using TerziyskiClima.Data.Models
+@model List<Purchase>
+
+@foreach (var purchase in Model)
+{
+    <p>Име на продукт: @purchase.Product.Name</p>
+    <p>Дата: @purchase.Date</p>
+    <p>Количество: @purchase.Quantity</p>
+    <p>Oбща цена: @(purchase.Quantity*purchase.Product.Price)</p>
+    <form method="post"  asp-action="Delete" asp-controller="Purchase">
+        <input type="hidden" value="@purchase.Id" name="id" />
+        <button type="submit" >Премахни поръчка</button>
+    </form>
+    <br />
+}

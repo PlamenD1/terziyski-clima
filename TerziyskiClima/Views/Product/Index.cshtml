@@ -4,11 +4,14 @@
 @{
 }
 
+@using TerziyskiClima.Models.ProductViewModels
+@model ProductIndexViewModel
+
 <div class="page-container">
     <header class="products-banner-container">
         <img src="~/resources/banner-3.png"/>
     </header>
-    @if (ViewBag.Role == "Admin")
+    @if (Model.Role == "Admin")
     {
         <form class="add-product-btn-container" method="get" asp-controller="Product" asp-action="Add">
             <input type="hidden" class="btn btn-primary" />
@@ -16,55 +19,28 @@
         </form>
     }
     <div class="card-grid">
-        @for (int i = 0; i < 3; i++)
-        {
-            <div class="card-container">
-                <img src=@String.Format("resources/ac{0}.jpg", i + 1) />
-                <h1>@ViewBag.Products[i].Name</h1>
-                <p>@ViewBag.Products[i].Price лв.</p>
-                <p>@ViewBag.Products[i].Description</p>
-                @if (ViewBag.Role == "Admin" || ViewBag.Role == "User")
-                {
-                    <form method="post" asp-controller="Cart" asp-action="AddToCart">
-                        <input type="hidden" class="btn btn-primary" value="@ViewBag.Products[i].Id" name="productId" />
-                        <button type="submit">Добави към количка</button>
-                    </form>
-                }
-                @if (ViewBag.Role == "Admin")
-                {
-                    <form method="get" asp-controller="Product" asp-action="Edit">
-                        <input type="hidden" class="btn btn-primary" value="@ViewBag.Products[i].Id" name="txtId" />
-                        <button type="submit">Промени</button>
-                    </form>
-                    <form method="post" asp-controller="Product" asp-action="Delete">
-                        <input type="hidden" class="btn btn-primary" value="@ViewBag.Products[i].Id" name="id" />
-                        <button type="submit">Изтрий</button>
-                    </form>
-                }
-            </div>
-        }
-        @for (int i = 3; i < ViewBag.Products.Count; i++)
+        @foreach (var product in Model.Products)
         {
     <div class="card-container">
         <img src=@String.Format("resources/ac{0}.jpg", new Random().Next(1, 5) ) />
-        <h1>@ViewBag.Products[i].Name</h1>
-        <p>@ViewBag.Products[i].Price лв.</p>
-        <p>@ViewBag.Products[i].Description</p>
-        @if (ViewBag.Role == "Admin" || ViewBag.Role == "User")
+        <h1>@product.Name</h1>
+        <p>@product.Price лв.</p>
+        <p>@product.Description</p>
+        @if (Model.Role == "Admin" || Model.Role == "User")
         {
             <form method="post" asp-controller="Cart" asp-action="AddToCart">
-                <input type="hidden" class="btn btn-primary" value="@ViewBag.Products[i].Id" name="productId" />
+                <input type="hidden" class="btn btn-primary" value="@product.Id" name="productId" />
                 <button type="submit">Добави към количка</button>
             </form>
         }
-        @if (ViewBag.Role == "Admin")
+        @if (Model.Role == "Admin")
         {
             <form method="get" asp-controller="Product" asp-action="Edit">
-                <input type="hidden" class="btn btn-primary" value="@ViewBag.Products[i].Id" name="txtId" />
+                <input type="hidden" class="btn btn-primary" value="@product.Id" name="id" />
                 <button type="submit">Промени</button>
             </form>
             <form method="post" asp-controller="Product" asp-action="Delete">
-                <input type="hidden" class="btn btn-primary" value="@ViewBag.Products[i].Id" name="id" />
+                <input type="hidden" class="btn btn-primary" value="@product.Id" name="id" />
                 <button type="submit">Изтрий</button>
             </form>
         }
@@ -72,15 +48,3 @@
         }
     </div>
 </div>
-
-@*<script>
-     function addToCart(productId) {
-        $.ajax({
-            type: "POST",
-            url: "Cart/AddToCart",
-            data: { productId }
-        });
-
-        document.getElementById("addToCartForm").hidden = true;
-    });
-</script>*@

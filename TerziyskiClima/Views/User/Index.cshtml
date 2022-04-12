@@ -1,0 +1,18 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@using TerziyskiClima.Data.Models
+@model List<User>
+
+@foreach (var user in Model)
+{
+    <p>Име: @user.Name @user.Surname</p>
+    <p>Email: @user.Email</p>
+    <form method="get" asp-action="Review" asp-controller="User">
+        <input type="hidden" value="@user.Id" name="userId" />
+        <button type="submit" >Прегледай</button>
+    </form>
+}

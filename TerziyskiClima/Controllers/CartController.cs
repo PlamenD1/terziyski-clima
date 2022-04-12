@@ -27,15 +27,15 @@ namespace TerziyskiClima.Controllers
 
         public IActionResult Index()
         {
-            ViewBag.Items = new List<CartItem>();
+            List<CartItem> items = new List<CartItem>();
             string cartContentString = HttpContext.Session.GetString(Global.CartSessionKey);
 
             if (!string.IsNullOrEmpty(cartContentString))
             {
                 Cart cartContent = cartContentString.ToCart();
-                ViewBag.Items = cartContent.Items;
+                items = cartContent.Items;
             }
-            return View();
+            return View(items);
         }
 
         [HttpPost]
@@ -53,6 +53,18 @@ namespace TerziyskiClima.Controllers
             HttpContext.Session.SetString(Global.CartSessionKey, newCartContentString);
 
             return RedirectToAction("Index", "Product");
+        }
+
+        [HttpPost]
+        public IActionResult ChangeQuantity(int productId, int quantity)
+        {
+            string cartContentString = HttpContext.Session.GetString(Global.CartSessionKey);
+            if (string.IsNullOrEmpty(cartContentString)) return RedirectToAction("Index");
+            string newCartContentString = cartService.ChangeQuantity(productId, quantity, cartContentString);
+
+            HttpContext.Session.SetString(Global.CartSessionKey, newCartContentString);
+
+            return RedirectToAction("Index");
         }
 
         [HttpPost]

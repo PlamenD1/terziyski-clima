@@ -3,18 +3,28 @@
 *@
 @{
 }
+
+@using TerziyskiClima.Models.Authentication
+@model LoginViewModel
+
 <div class="auth-container">
     <h1>Вход</h1>
     <form method="post">
         <p class="c-auth-label">E-mail</p>
-        <input class="form-control c-auth-input" type="text" name="txtEmail" placeholder="E-mail..."/>
+        <input class="form-control c-auth-input" type="text" asp-for="@Model.Email" placeholder="E-mail..." />
+        <span asp-validation-for="@Model.Email" class="text-danger"></span>
         <p class="c-auth-label">Парола</p>
-        <input class="form-control c-auth-input" type="password" name="txtPassword" placeholder="Парола..."/>
-        <br />
-        @if (ViewBag.Error != null)
+        <input class="form-control c-auth-input" type="password" asp-for="@Model.Password" placeholder="Парола..." />
+        <span asp-validation-for="@Model.Password" class="text-danger"></span>
+        @if (Model.ShowError)
         {
-            <h2 class="error">@ViewBag.Error</h2>
+            <span class="text-danger">@Model.Error</span>
         }
+        <br />
         <button class="btn c-btn">Влез</button>
     </form>
 </div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

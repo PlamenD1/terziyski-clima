@@ -24,7 +24,7 @@ namespace TerziyskiClima.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=DESKTOP-RRQS078\SQLEXPRESS01;Database=TerziskyClima;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer(@"Server=DESKTOP-M84NR9F;Database=TerziskyClima;Trusted_Connection=True;");
             base.OnConfiguring(optionsBuilder);
         }
     }
