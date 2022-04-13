@@ -10,8 +10,8 @@ using TerziyskiClima.Data;
 namespace TerziyskiClima.Data.Migrations
 {
     [DbContext(typeof(TerziyskiClimaDbContext))]
-    [Migration("20220412203924_final")]
-    partial class final
+    [Migration("20220413142921_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

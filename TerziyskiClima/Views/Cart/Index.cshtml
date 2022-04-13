@@ -20,7 +20,7 @@
                 <div>
                     <h1>Количество</h1>
                     <p>
-                        x <form method="post" asp-action="ChangeQuantity" asp-controller="Cart">
+                        <form method="post" asp-action="ChangeQuantity" asp-controller="Cart">
                             <input type="hidden" value="@item.Product.Id" name="productId" />
                             <input id="origQuantity" type="hidden" value="@item.Quantity" />
                             <input id="quantity" asp-for="@item.Quantity" type="number" name="quantity" />

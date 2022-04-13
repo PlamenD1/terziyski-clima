@@ -1,13 +1,55 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@{
-}
 
 @using TerziyskiClima.Data.Models
 @model User
 
-<p>Име: @Model.Name @Model.Surname</p>
+<div class="review-container">
+    <h1>Преглед на потребител</h1>
+    <div class="review">
+        <div class="review-info-container user-review">
+            <div class="review-grid">
+                <label>Име</label>
+                <p>@Model.Name @Model.Surname</p>
+                <label>Адрес</label>
+                <p>@Model.Address</p>
+                <label>Email</label>
+                <p>@Model.Email</p>
+                <label>Телефон</label>
+                <p>@Model.Phone</p>
+                <label>Роля</label>
+                <p>@Model.Role</p>
+            </div>
+        </div>
+        <div class="user-purchase-review-container">
+            <h2>Поръчки</h2>
+            <div class="user-purchase-grid">
+                @foreach (var purchase in Model.Purchases)
+                {
+                    <div class="user-purchase">
+                        <div>
+                            <img src=@Url.Content(String.Format("~/resources/ac{0}.jpg", new Random().Next(1, 5))) />
+                        </div>
+                        <div>
+                            <p>Име на продукт: @purchase.Product.Name</p>
+                            <p>Дата: @purchase.Date</p>
+                            <p>Количество: @purchase.Quantity</p>
+                            <p>Oбща цена: @(purchase.Quantity*purchase.Product.Price)</p>
+                            <form method="post" asp-action="Delete" asp-controller="Purchase">
+                                <input type="hidden" value="@purchase.Id" name="id" />
+                                <input type="hidden" value="@purchase.UserId" name="_userId" />
+                                <button type="submit">Премахни поръчка</button>
+                            </form>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<p>Име: @Model.Name @Model.Surname</p>
 <p>Адрес: @Model.Address</p>
 <p>Email: @Model.Email</p>
 <p>Телефон: @Model.Phone</p>
@@ -25,4 +67,4 @@
         <button type="submit">Премахни поръчка</button>
     </form>
     <br />
-}
+}*@

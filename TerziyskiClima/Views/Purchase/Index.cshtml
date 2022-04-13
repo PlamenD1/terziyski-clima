@@ -7,15 +7,22 @@
 @using TerziyskiClima.Data.Models
 @model List<Purchase>
 
-@foreach (var purchase in Model)
-{
-    <p>Име на продукт: @purchase.Product.Name</p>
-    <p>Дата: @purchase.Date</p>
-    <p>Количество: @purchase.Quantity</p>
-    <p>Oбща цена: @(purchase.Quantity*purchase.Product.Price)</p>
-    <form method="post"  asp-action="Delete" asp-controller="Purchase">
-        <input type="hidden" value="@purchase.Id" name="id" />
-        <button type="submit" >Премахни поръчка</button>
-    </form>
-    <br />
-}
+<div class="page-container">
+    <h1>Преглед на поръчки</h1>
+    <div class="card-grid">
+        @foreach (var purchase in Model)
+        {
+        <div class="card-container">
+            <img src=@String.Format("resources/ac{0}.jpg", new Random().Next(1, 5) ) />
+
+            <h1>@purchase.Product.Name</h1>
+            <p>@purchase.Quantity бр.</p>
+            <p>@(purchase.Quantity*purchase.Product.Price) лв.</p>
+            <form method="post" asp-action="Delete" asp-controller="Purchase">
+                <input type="hidden" value="@purchase.Id" name="id" />
+                <button class="delete-btn" type="submit">Премахни поръчка</button>
+            </form>
+        </div>
+        }
+    </div>
+</div>

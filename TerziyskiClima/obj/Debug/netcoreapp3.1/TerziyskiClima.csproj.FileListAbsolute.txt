@@ -367,3 +367,8 @@ D:\GitHub\terziyski-clima\TerziyskiClima\bin\Debug\netcoreapp3.1\Castle.Core.dll
 D:\GitHub\terziyski-clima\TerziyskiClima\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Proxies.dll
 D:\GitHub\terziyski-clima\TerziyskiClima\obj\Debug\netcoreapp3.1\Razor\Views\User\Index.cshtml.g.cs
 D:\GitHub\terziyski-clima\TerziyskiClima\obj\Debug\netcoreapp3.1\Razor\Views\User\Review.cshtml.g.cs
+D:\TerziyskiClima\TerziyskiClima\bin\Debug\netcoreapp3.1\Castle.Core.dll
+D:\TerziyskiClima\TerziyskiClima\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Proxies.dll
+D:\TerziyskiClima\TerziyskiClima\obj\Debug\netcoreapp3.1\Razor\Views\User\Index.cshtml.g.cs
+D:\TerziyskiClima\TerziyskiClima\obj\Debug\netcoreapp3.1\Razor\Views\User\Review.cshtml.g.cs
+D:\TerziyskiClima\TerziyskiClima\obj\Debug\netcoreapp3.1\Razor\Views\Home\ForUs.cshtml.g.cs

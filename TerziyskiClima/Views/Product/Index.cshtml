@@ -21,30 +21,30 @@
     <div class="card-grid">
         @foreach (var product in Model.Products)
         {
-    <div class="card-container">
-        <img src=@String.Format("resources/ac{0}.jpg", new Random().Next(1, 5) ) />
-        <h1>@product.Name</h1>
-        <p>@product.Price лв.</p>
-        <p>@product.Description</p>
-        @if (Model.Role == "Admin" || Model.Role == "User")
-        {
-            <form method="post" asp-controller="Cart" asp-action="AddToCart">
-                <input type="hidden" class="btn btn-primary" value="@product.Id" name="productId" />
-                <button type="submit">Добави към количка</button>
-            </form>
-        }
-        @if (Model.Role == "Admin")
-        {
-            <form method="get" asp-controller="Product" asp-action="Edit">
-                <input type="hidden" class="btn btn-primary" value="@product.Id" name="id" />
-                <button type="submit">Промени</button>
-            </form>
-            <form method="post" asp-controller="Product" asp-action="Delete">
-                <input type="hidden" class="btn btn-primary" value="@product.Id" name="id" />
-                <button type="submit">Изтрий</button>
-            </form>
-        }
-    </div>
+        <div class="card-container">
+            <img src=@String.Format("resources/ac{0}.jpg", new Random().Next(1, 5) ) />
+            <h1>@product.Name</h1>
+            <p>@product.Price лв.</p>
+            <p>@product.Description</p>
+            @if (Model.Role == "Admin" || Model.Role == "User")
+            {
+                <form method="post" asp-controller="Cart" asp-action="AddToCart">
+                    <input type="hidden" class="btn btn-primary" value="@product.Id" name="productId" />
+                    <button type="submit">Добави към количка</button>
+                </form>
+            }
+            @if (Model.Role == "Admin")
+            {
+                <form method="get" asp-controller="Product" asp-action="Edit">
+                    <input type="hidden" class="btn btn-primary" value="@product.Id" name="id" />
+                    <button type="submit">Промени</button>
+                </form>
+                <form method="post" asp-controller="Product" asp-action="Delete">
+                    <input type="hidden" class="btn btn-primary" value="@product.Id" name="id" />
+                    <button type="submit">Изтрий</button>
+                </form>
+            }
+        </div>
         }
     </div>
 </div>

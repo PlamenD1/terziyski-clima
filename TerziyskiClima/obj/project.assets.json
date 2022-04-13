@@ -7501,25 +7501,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\1\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\User\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\GitHub\\terziyski-clima\\TerziyskiClima\\TerziyskiClima.csproj",
+      "projectUniqueName": "D:\\TerziyskiClima\\TerziyskiClima\\TerziyskiClima.csproj",
       "projectName": "TerziyskiClima",
-      "projectPath": "D:\\GitHub\\terziyski-clima\\TerziyskiClima\\TerziyskiClima.csproj",
-      "packagesPath": "C:\\Users\\1\\.nuget\\packages\\",
-      "outputPath": "D:\\GitHub\\terziyski-clima\\TerziyskiClima\\obj\\",
+      "projectPath": "D:\\TerziyskiClima\\TerziyskiClima\\TerziyskiClima.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "D:\\TerziyskiClima\\TerziyskiClima\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-      ],
       "configFilePaths": [
-        "C:\\Users\\1\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -7532,11 +7527,11 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "D:\\GitHub\\terziyski-clima\\TerziyskiClima.Data\\TerziyskiClima.Data.csproj": {
-              "projectPath": "D:\\GitHub\\terziyski-clima\\TerziyskiClima.Data\\TerziyskiClima.Data.csproj"
+            "D:\\TerziyskiClima\\TerziyskiClima.Data\\TerziyskiClima.Data.csproj": {
+              "projectPath": "D:\\TerziyskiClima\\TerziyskiClima.Data\\TerziyskiClima.Data.csproj"
             },
-            "D:\\GitHub\\terziyski-clima\\TerziyskiClima.Services\\TerziyskiClima.Services.csproj": {
-              "projectPath": "D:\\GitHub\\terziyski-clima\\TerziyskiClima.Services\\TerziyskiClima.Services.csproj"
+            "D:\\TerziyskiClima\\TerziyskiClima.Services\\TerziyskiClima.Services.csproj": {
+              "projectPath": "D:\\TerziyskiClima\\TerziyskiClima.Services\\TerziyskiClima.Services.csproj"
             }
           }
         }
@@ -7592,7 +7587,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
       }
     }
   }
